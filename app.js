@@ -6,7 +6,7 @@ const MovieCtrl = (function() {
     this.title = title;
     this.plot = plot;
     this.actors = actors;
-    this.actors = runtime;
+    this.runtime = runtime;
     this.poster = poster;
   };
 
@@ -35,6 +35,7 @@ const MovieCtrl = (function() {
         activeMovie.Runtime,
         activeMovie.Poster
       );
+      StorageCtrl.storeMovie(newMovie);
       data.movies.push(newMovie);
     },
 
@@ -49,6 +50,43 @@ const MovieCtrl = (function() {
           }
         }
       );
+    }
+  };
+})();
+
+const StorageCtrl = (function() {
+  function getMoviesfromStorage() {
+    let movies;
+    const moviesJSON = localStorage.getItem('movies');
+    if (moviesJSON === null) {
+      movies = [];
+    } else {
+      movies = JSON.parse(moviesJSON);
+    }
+    return movies;
+  }
+  // Public methods
+  return {
+    storeMovie: function(movie) {
+      const movies = getMoviesfromStorage();
+      movies.push(movie);
+      localStorage.setItem('movies', JSON.stringify(movies));
+    },
+    getMovies: function() {
+      return getMoviesfromStorage();
+    },
+    deleteMovie: function(id) {
+      let movies = JSON.parse(localStorage.getItem('movies'));
+
+      movies.forEach(function(movie, index) {
+        if (id === movie.id) {
+          items.splice(index, 1);
+        }
+      });
+      localStorage.setItem('movies', JSON.stringify(movies));
+    },
+    clearMovies: function() {
+      localStorage.removeItem('movies');
     }
   };
 })();
