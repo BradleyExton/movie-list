@@ -21,7 +21,6 @@ const MovieCtrl = (function() {
     getMovies: function() {
       return data.movies;
     },
-
     addActiveMovie: function() {
       const id = Math.random()
         .toString(36)
@@ -38,7 +37,16 @@ const MovieCtrl = (function() {
       StorageCtrl.storeMovie(newMovie);
       data.movies.push(newMovie);
     },
+    removeMovie: function(id) {
+      const ids = data.movies.map(function(movie) {
+        return movie.id;
+      });
 
+      const index = ids.indexOf(id);
+      data.movies.splice(index, 1);
+
+      StorageCtrl.deleteMovie(id);
+    },
     searchAndSetMovie: function(search) {
       http.get(
         'http://www.omdbapi.com/?i=tt3896198&apikey=2d1317e1&t=' + search,
@@ -80,7 +88,7 @@ const StorageCtrl = (function() {
 
       movies.forEach(function(movie, index) {
         if (id === movie.id) {
-          items.splice(index, 1);
+          movies.splice(index, 1);
         }
       });
       localStorage.setItem('movies', JSON.stringify(movies));
