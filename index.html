@@ -4,9 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
     <title>Movies2Watch</title>
   </head>
   <body>
+    <header class="header">
+      <div class="title">
+        <h1>Movies2Watch</h1>
+        <img id="logo" src="video-solid.svg" alt="" />
+      </div>
+      <h4 class="sub-title">List the Movies you want to watch</h4>
+    </header>
+    <div class="body">
+      <div class="movie-search">
+        <div class="search-container">
+          <input id="search-movie-input" placeholder="Search..." type="text" />
+          <div class="movie-details">
+            <div class="details-left-column"></div>
+            <div class="details-right-column">
+              <div>
+                Search for a movie...
+              </div>
+              <button id="add-movie-btn">Add Movie To List</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="movie-table">
+        <table class="content-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>TITLE</th>
+              <th>PLOT</th>
+              <th>RUNTIME</th>
+              <th>ACTORS</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="movie-tabe-body"></tbody>
+        </table>
+      </div>
+    </div>
+    <footer>
+      <p>Bradley Exton 2019</p>
+    </footer>
     <script src="simpleHTTP.js"></script>
     <script src="app.js"></script>
   </body>
