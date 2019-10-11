@@ -80,15 +80,34 @@ h4 {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
+.remove {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove:hover,
+.remove:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .movie-search {
   margin: 35px;
 }
 
-.movie-details {
+.active-movie-details {
   display: flex;
 }
-.details-left-column img {
-  width: 200px;
+
+img {
+  width: 100px;
 }
 
 .details-right-column {
@@ -128,7 +147,6 @@ h4 {
 
 /* Table Styles */
 .content-table {
-  display: none;
   border-collapse: collapse;
   margin: 25px 0;
   font-size: 0.9em;
@@ -156,6 +174,9 @@ h4 {
 
 .content-table tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
+}
+.content-table tbody tr:nth-of-type(odd) {
+  background-color: #fafcfc;
 }
 
 .content-table tbody tr:last-of-type {
